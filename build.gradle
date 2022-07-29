@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+}
+
+group = 'io.github'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.7.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.7.2'
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
+    implementation 'org.camunda.bpm:camunda-engine:7.17.0'
+    implementation group: 'org.camunda.bpm', name: 'camunda-engine-plugin-connect', version: '7.17.0'
+    implementation group: 'org.camunda.bpm', name: 'camunda-engine-plugin-spin', version: '7.17.0'
+
+    testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '15.0.0'
+    testImplementation group: 'org.camunda.bpm.extension', name: 'camunda-bpm-junit5', version: '1.1.0'
+    testImplementation 'org.camunda.bpm.extension.mockito:camunda-bpm-mockito:5.16.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+    testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
